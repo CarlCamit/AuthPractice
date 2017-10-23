@@ -1,0 +1,26 @@
+<h1>Sign In</h1>
+
+<!-- Uses url: over model: because it does not associate with a model -->
+<%= form_with(url: sessions_path, local: true) do |form| %>
+
+    <div class="field">
+        <%= form.label :email %><br />
+        <%= form.text_field :email, id: :email %>
+    </div>
+
+    <div class="field">
+        <%= form.label :password %><br />
+        <%= form.password_field :password, id: :password %>
+    </div>
+
+    <p><%= link_to "Reset Password", new_password_reset_path %></p>
+
+    <div class="field">
+        <!-- Passes a remember me parameter to be used in the sessions controller for a conditional logic -->
+        <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+        <%= form.label :remember_me %><br />
+    </div>
+
+    <div class="actions"><%= form.submit "Sign In" %></div>
+    
+<% end %>

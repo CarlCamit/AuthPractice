@@ -1,0 +1,14 @@
+<h1>Reset Password</h1>
+
+<!-- Uses url: over model: because it does not associate with a model, method: :post uses the create action in the controller -->
+<%= form_with(url: password_resets_path, method: :post) do |form| %>
+
+    <div class="field">
+        <%= form.label :email %><br />
+        <!-- Passes email parameters to be used in the controller -->
+        <%= text_field_tag :email, params[:email] %>
+    </div>
+
+    <div class="actions"><%= form.submit "Reset Password" %></div>
+
+<% end %>

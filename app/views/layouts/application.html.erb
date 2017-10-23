@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AuthPractice</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="user_header">
+        <% if current_user %>
+          Welcome, <%= current_user.email %>
+          <%= link_to "Sign Out", sign_out_path(current_user), method: :delete %>
+        <% else %>
+          <%= link_to "Sign Up", sign_up_path %> or
+          <%= link_to "Sign In", sign_in_path %>
+        <% end %>
+      </div>
+      <%= yield %>
+    </div>
+  </body>
+</html>

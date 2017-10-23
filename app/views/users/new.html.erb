@@ -1,0 +1,32 @@
+<h1>Sign Up</h1>
+
+<!-- Uses model: over url: because it associates with the User model -->
+<%= form_with(model: @user, local: true) do |form|  %>
+    <!-- If there are any errors -->
+    <% if @user.errors.any? %>
+        <div>
+            <h3>Form is invalid</h3>
+            <!-- Find all errors and display them -->
+            <% @user.errors.full_messages.each do |message| %>
+                <p><%= message %></p>
+            <% end %>
+        </div>
+    <% end  %>
+
+    <div class="field">
+        <%= form.label :email %><br />
+        <%= form.text_field :email, id: :email %>
+    </div>
+
+    <div class="field">
+        <%= form.label :password %><br />
+        <%= form.password_field :password, id: :password %>
+    </div>
+
+    <div class="field">
+        <%= form.label :password_confirmation %><br />
+        <%= form.password_field :password_confirmation, id: :password_confirmation %>
+    </div>
+
+    <div class="actions"><%= form.submit "Sign Up" %></div>
+<% end %>

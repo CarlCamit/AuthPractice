@@ -1,0 +1,27 @@
+<h1>Reset Password</h1>
+
+<!-- Uses model: over url: because it associates with the User model. Specifies a url because it does not use the one relating to users -->
+<%= form_with(model: @user, url: password_reset_path(params[:id])) do |form|  %>
+    <!-- If there are any errors -->
+    <% if @user.errors.any? %>
+        <div>
+            <h3>Form is invalid</h3>
+            <!-- Find all errors and display them -->
+            <% @user.errors.full_messages.each do |message| %>
+                <p><%= message %></p>
+            <% end %>
+        </div>
+    <% end  %>
+
+    <div class="field">
+        <%= form.label :password %><br />
+        <%= form.password_field :password, id: :password %>
+    </div>
+
+    <div class="field">
+        <%= form.label :password_confirmation %><br />
+        <%= form.password_field :password_confirmation, id: :password_confirmation %>
+    </div>
+
+    <div class="actions"><%= form.submit "Reset Password" %></div>
+<% end %>
